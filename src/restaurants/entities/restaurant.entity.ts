@@ -12,28 +12,28 @@ import {
 @Entity()
 export class Restaurant {
   @PrimaryGeneratedColumn()
-  @Field((is) => Number)
+  @Field((type) => Number)
   @IsNumber()
   id: number;
 
-  @Field((is) => String)
+  @Field((type) => String)
   @Column()
   @IsString()
   @Length(5, 10)
   name: string;
 
-  @Field((is) => Boolean, { defaultValue: true })
+  @Field((type) => Boolean, { defaultValue: true })
   @Column({ default: true })
   @IsBoolean()
   @IsOptional()
   isVegan: boolean;
 
-  @Field((is) => String)
+  @Field((type) => String)
   @Column()
   @IsString()
   address: string;
 
-  @Field((is) => String, { defaultValue: 'anonymous' })
+  @Field((type) => String, { defaultValue: 'anonymous' })
   @Column()
   @IsString()
   @IsOptional()
