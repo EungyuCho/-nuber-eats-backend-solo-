@@ -8,11 +8,11 @@ import * as Joi from 'joi';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './users/userModule';
 import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
-import { jwtMiddleware } from './jwt/jwt.middleware';
+import { JwtMiddleware } from './jwt/jwt.middleware';
 
 @Module({
   imports: [
@@ -44,7 +44,7 @@ import { jwtMiddleware } from './jwt/jwt.middleware';
     GraphQLModule.forRoot({
       autoSchemaFile: true,
     }),
-    UsersModule,
+    UserModule,
     CommonModule,
     JwtModule.forRoot({
       privateKey: process.env.PRIVATE_KEY,
@@ -53,4 +53,11 @@ import { jwtMiddleware } from './jwt/jwt.middleware';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(JwtMiddleware).forRoutes({
+      path: '/graphql',
+      method: RequestMethod.POST,
+    });
+  }
+}
