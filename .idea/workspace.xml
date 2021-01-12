@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9028cfe7-a361-49fa-9e44-d41f6447379d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/auth/auth.guard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jwt/jwt.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jwt/jwt.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/userResolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/userResolver.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +78,8 @@
       <updated>1610189763603</updated>
       <workItem from="1610189764689" duration="3225000" />
       <workItem from="1610240822950" duration="8313000" />
-      <workItem from="1610329135676" duration="5053000" />
+      <workItem from="1610329135676" duration="5702000" />
+      <workItem from="1610408073261" duration="3332000" />
     </task>
     <servers />
   </component>
@@ -98,23 +99,24 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1155" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1610371993281">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1610420778303">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610371993281" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610420778303" />
     <state x="-1180" y="274" key="FileChooserDialogImpl" timestamp="1610260984211">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610260984211" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1610374566475">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1610430429987">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610374566475" />
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610287832329" />
-    <state x="-1251" y="236" width="582" height="568" key="find.popup" timestamp="1610330564748">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610430429987" />
+    <state x="669" y="236" width="582" height="568" key="find.popup" timestamp="1610430027566">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1251" y="236" width="582" height="568" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610330564748" />
-    <state x="669" y="236" width="582" height="568" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610277704572" />
+    <state x="669" y="236" width="582" height="568" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610430027566" />
   </component>
 </project>
