@@ -20,8 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9028cfe7-a361-49fa-9e44-d41f6447379d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/auth/auth-user.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/users/dtos/edit-profile.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/dtos/output.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/dtos/output.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/entities/core.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/entities/core.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jwt/jwt.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/jwt/jwt.middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/dtos/create-account.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/create-account.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/dtos/login.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/login.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/dtos/user-profile.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/dtos/user-profile.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/users/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/userResolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/userResolver.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +63,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../algorism" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../nodejs/vanillaTypescript" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -78,7 +85,7 @@
       <workItem from="1610189764689" duration="3225000" />
       <workItem from="1610240822950" duration="8313000" />
       <workItem from="1610329135676" duration="5702000" />
-      <workItem from="1610408073261" duration="4679000" />
+      <workItem from="1610408073261" duration="6925000" />
     </task>
     <servers />
   </component>
@@ -103,15 +110,16 @@
     </state>
     <state x="-1155" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610371993281" />
     <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610420778303" />
-    <state x="-1180" y="274" key="FileChooserDialogImpl" timestamp="1610260984211">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1610434190218">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610260984211" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1610431951541">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610434190218" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1610433373944">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1610374566475" />
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610431951541" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1610433373944" />
     <state x="669" y="236" width="582" height="568" key="find.popup" timestamp="1610430027566">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
