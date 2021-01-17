@@ -5,7 +5,6 @@ import { getConnection, Repository } from 'typeorm';
 import * as request from 'supertest';
 import { User } from '../src/users/entities/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { ok } from 'assert';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
@@ -286,6 +285,63 @@ describe('UserModule (e2e)', () => {
         });
     });
   });
+  describe('editProfile', () => {
+    const NEW_EMAIL = 'nico@new.com';
+    it('should change email', () => {
+      return request(app.getHttpServer())
+        .post(GRAPHQL_ENDPOINT)
+        .set('X-JWT', token)
+        .send({
+          query: `
+            mutation {
+              editProfile(input:{
+                email: "${NEW_EMAIL}"
+              }) {
+                ok
+                error
+              }
+            }
+        `,
+        })
+        .expect(200)
+        .expect((res) => {
+          const {
+            body: {
+              data: {
+                editProfile: { ok, error },
+              },
+            },
+          } = res;
+          expect(ok).toBe(true);
+          expect(error).toBe(null);
+        });
+    });
+
+    it('should have new email', async () => {
+      return request(app.getHttpServer())
+        .post(GRAPHQL_ENDPOINT)
+        .set('X-JWT', token)
+        .send({
+          query: `
+            {
+              me {
+                email
+              }
+            }
+            `,
+        })
+        .expect(200)
+        .expect((res) => {
+          const {
+            body: {
+              data: {
+                me: { email },
+              },
+            },
+          } = res;
+          expect(email).toBe(NEW_EMAIL);
+        });
+    });
+  });
   it.todo('verifyEmail');
-  it.todo('editProfile');
 });
