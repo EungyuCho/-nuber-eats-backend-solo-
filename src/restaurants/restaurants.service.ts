@@ -13,6 +13,11 @@ import {
   EditRestaurantOutput,
 } from './dtos/edit-restaurant.dto';
 import { CategoryRepository } from './repositories/category.repository';
+import {
+  DeleteRestaurantInput,
+  DeleteRestaurantOutput,
+} from './dtos/delete-restaurant.dto';
+import { CoreOutput } from '../common/dtos/output.dto';
 @Injectable()
 export class RestaurantsService {
   constructor(
@@ -50,23 +55,15 @@ export class RestaurantsService {
     editRestaurantInput: EditRestaurantInput,
   ): Promise<EditRestaurantOutput> {
     try {
-      const restaurant = await this.restaurants.findOne(
+      const ownRestaurantOutput = await this.checkOwnRestaurant(
         editRestaurantInput.restaurantId,
+        owner.id,
+        'edit',
       );
-
-      if (!restaurant) {
-        return {
-          ok: false,
-          error: 'Restaurant not found',
-        };
+      if (!ownRestaurantOutput.ok) {
+        return ownRestaurantOutput;
       }
 
-      if (owner.id !== restaurant.ownerId) {
-        return {
-          ok: false,
-          error: `You can't edit a restaurant that you don't own`,
-        };
-      }
       let category: Category = null;
 
       if (editRestaurantInput.categoryName) {
@@ -92,5 +89,59 @@ export class RestaurantsService {
         error: 'Could not edit restaurant',
       };
     }
+  }
+
+  async deleteRestaurant(
+    owner: User,
+    { restaurantId }: DeleteRestaurantInput,
+  ): Promise<DeleteRestaurantOutput> {
+    try {
+      const ownRestaurantOutput = await this.checkOwnRestaurant(
+        restaurantId,
+        owner.id,
+        'delete',
+      );
+      if (!ownRestaurantOutput.ok) {
+        return ownRestaurantOutput;
+      }
+
+      await this.restaurants.delete(restaurantId);
+      return {
+        ok: true,
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: 'Could not delete',
+      };
+    }
+
+    return Promise.resolve(undefined);
+  }
+
+  async checkOwnRestaurant(
+    restaurantId: number,
+    ownerId: number,
+    method: string,
+  ): Promise<CoreOutput> {
+    const restaurant = await this.restaurants.findOne(restaurantId);
+
+    if (!restaurant) {
+      return {
+        ok: false,
+        error: 'Restaurant not found',
+      };
+    }
+
+    if (ownerId !== restaurant.ownerId) {
+      return {
+        ok: false,
+        error: `You can't ${method} a restaurant that you don't own`,
+      };
+    }
+
+    return {
+      ok: true,
+    };
   }
 }
