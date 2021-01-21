@@ -5,6 +5,7 @@ import { CoreEntity } from '../../common/entities/core.entity';
 import { Category } from './category.entity';
 import { User } from '../../users/entities/user.entity';
 import { Dish } from './dish.entity';
+import { Order } from './order.entity';
 
 @InputType('RestaurantInputType', { isAbstract: true })
 @ObjectType()
@@ -33,7 +34,7 @@ export class Restaurant extends CoreEntity {
   })
   category: Category;
 
-  @Field((type) => User, { nullable: true })
+  @Field((type) => User)
   @ManyToOne((type) => User, (user) => user.restaurants, {
     onDelete: 'CASCADE',
   })
@@ -41,6 +42,10 @@ export class Restaurant extends CoreEntity {
 
   @RelationId((restaurant: Restaurant) => restaurant.owner)
   ownerId: number;
+
+  @Field((type) => [Order])
+  @OneToMany((type) => Order, (order) => order.restaurant)
+  orders: Order[];
 
   @Field((type) => [Dish], { nullable: true })
   @OneToMany((type) => Dish, (dish) => dish.restaurant)

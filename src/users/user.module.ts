@@ -5,9 +5,14 @@ import { UserService } from './user.service';
 import { UserResolver } from './user.resolver';
 import { ConfigService } from '@nestjs/config';
 import { Verification } from './entities/verification.entity';
+import { Order } from '../restaurants/entities/order.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Verification]), ConfigService],
+  imports: [
+    TypeOrmModule.forFeature([User, Verification]),
+    ConfigService,
+    Order,
+  ],
   providers: [UserResolver, UserService],
   exports: [UserService],
 })
