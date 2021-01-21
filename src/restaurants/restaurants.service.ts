@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Restaurant } from './entities/restaurant.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Like, Raw, Repository } from 'typeorm';
 import {
   CreateRestaurantInput,
   CreateRestaurantOutput,
@@ -21,6 +21,11 @@ import { CoreOutput } from '../common/dtos/output.dto';
 import { AllCategoriesOutput } from './dtos/all-categories.dto';
 import { CategoryInput, CategoryOutput } from './dtos/category.dto';
 import { RestaurantsInput, RestaurantsOutput } from './dtos/restaurants.dto';
+import { RestaurantInput, RestaurantOutput } from './dtos/restaurant.dto';
+import {
+  SearchRestaurantsInput,
+  SearchRestaurantsOutput,
+} from './dtos/search-restaurant.dto';
 @Injectable()
 export class RestaurantsService {
   constructor(
@@ -118,8 +123,6 @@ export class RestaurantsService {
         error: 'Could not delete',
       };
     }
-
-    return Promise.resolve(undefined);
   }
 
   async checkOwnRestaurant(
@@ -220,6 +223,55 @@ export class RestaurantsService {
       return {
         ok: false,
         error: 'Could not load restaurants',
+      };
+    }
+  }
+
+  async findRestaurantById({
+    restaurantId,
+  }: RestaurantInput): Promise<RestaurantOutput> {
+    try {
+      const restaurant = await this.restaurants.findOne(restaurantId);
+      if (!restaurant) {
+        return {
+          ok: false,
+          error: 'Restaurant not found',
+        };
+      }
+      return {
+        ok: true,
+        restaurant,
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: 'Could not find restaurant',
+      };
+    }
+  }
+
+  async searchRestaurants({
+    page,
+    query,
+  }: SearchRestaurantsInput): Promise<SearchRestaurantsOutput> {
+    try {
+      const [restaurants, totalResults] = await this.restaurants.findAndCount({
+        where: {
+          name: Raw((name) => `${name} ILIKE '%${query}%'`),
+        },
+        take: 10,
+        skip: (page - 1) * 10,
+      });
+      return {
+        ok: true,
+        restaurants,
+        results: totalResults,
+        totalPages: Math.ceil(totalResults / 10),
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: 'Could not search for restaurant',
       };
     }
   }
