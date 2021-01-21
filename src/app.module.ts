@@ -87,6 +87,7 @@ import { OrderItem } from './orders/entities/order-item.entity';
     UserModule,
     RestaurantsModule,
     OrdersModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],
