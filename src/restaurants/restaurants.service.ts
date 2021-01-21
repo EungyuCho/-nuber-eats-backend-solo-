@@ -18,6 +18,7 @@ import {
   DeleteRestaurantOutput,
 } from './dtos/delete-restaurant.dto';
 import { CoreOutput } from '../common/dtos/output.dto';
+import { AllCategoriesOutput } from './dtos/all-categories.dto';
 @Injectable()
 export class RestaurantsService {
   constructor(
@@ -143,5 +144,24 @@ export class RestaurantsService {
     return {
       ok: true,
     };
+  }
+
+  async allCategories(): Promise<AllCategoriesOutput> {
+    try {
+      const categories = await this.categories.find();
+      return {
+        ok: true,
+        categories: categories,
+      };
+    } catch {
+      return {
+        ok: false,
+        error: 'Could not load categories',
+      };
+    }
+  }
+
+  countRestaurants(category: Category) {
+    return this.restaurants.count({ category });
   }
 }
