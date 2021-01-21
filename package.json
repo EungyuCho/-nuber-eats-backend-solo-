@@ -31,11 +31,13 @@
     "@types/jsonwebtoken": "^8.5.0",
     "apollo-server-express": "^2.19.0",
     "bcrypt": "^5.0.0",
+    "class-transformer": "^0.3.2",
     "class-validator": "^0.12.2",
     "cross-env": "^7.0.3",
     "form-data": "^2.3.3",
     "got": "^11.8.1",
     "graphql": "^15.4.0",
+    "graphql-subscriptions": "^1.1.0",
     "graphql-tools": "^7.0.2",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
@@ -70,7 +72,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^src/(.*)$" : "<rootDir>/$1"
+      "^src/(.*)$": "<rootDir>/$1"
     },
     "moduleFileExtensions": [
       "js",
