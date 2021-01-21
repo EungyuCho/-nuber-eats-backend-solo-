@@ -19,6 +19,7 @@ import {
 } from './dtos/delete-restaurant.dto';
 import { CoreOutput } from '../common/dtos/output.dto';
 import { AllCategoriesOutput } from './dtos/all-categories.dto';
+import { CategoryInput, CategoryOutput } from './dtos/category.dto';
 @Injectable()
 export class RestaurantsService {
   constructor(
@@ -163,5 +164,40 @@ export class RestaurantsService {
 
   countRestaurants(category: Category) {
     return this.restaurants.count({ category });
+  }
+
+  async findCategoryBySlug({
+    slug,
+    page,
+  }: CategoryInput): Promise<CategoryOutput> {
+    try {
+      const category = await this.categories.findOne({ slug });
+      if (!category) {
+        return {
+          ok: false,
+          error: 'Category not found',
+        };
+      }
+
+      const restaurants = await this.restaurants.find({
+        where: {
+          category,
+        },
+        take: 10,
+        skip: (page - 1) * 10,
+      });
+      const totalResults = await this.countRestaurants(category);
+      return {
+        ok: true,
+        category,
+        restaurants,
+        totalPages: Math.ceil(totalResults / 10),
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        error: 'Could not load category',
+      };
+    }
   }
 }
