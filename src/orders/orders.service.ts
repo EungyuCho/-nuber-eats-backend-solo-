@@ -11,7 +11,11 @@ import { Dish } from '../restaurants/entities/dish.entity';
 import { GetOrdersInput, GetOrdersOutput } from './dtos/get-orders.dto';
 import { GetOrderInput, GetOrderOutput } from './dtos/get-order.dto';
 import { EditOrderInput, EditOrderOutput } from './dtos/edit-order.dto';
-import { NEW_PENDING_ORDER, PUB_SUB } from '../common/common.constants';
+import {
+  NEW_COOKED_ORDER,
+  NEW_PENDING_ORDER,
+  PUB_SUB,
+} from '../common/common.constants';
 import { PubSub } from 'graphql-subscriptions';
 
 @Injectable()
@@ -244,7 +248,14 @@ export class OrdersService {
         };
       }
 
-      await this.orders.save([{ id: orderId, status }]);
+      await this.orders.save({ id: orderId, status });
+      if (user.role === UserRole.Owner) {
+        if (status === OrderStatus.Cooked) {
+          await this.pubsub.publish(NEW_COOKED_ORDER, {
+            cookedOrders: { ...order, status },
+          });
+        }
+      }
       return {
         ok: true,
       };

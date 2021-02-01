@@ -199,10 +199,9 @@ export class RestaurantsService {
       const totalResults = await this.countRestaurants(category);
       return {
         ok: true,
-        category,
         restaurants,
-        totalPages: Math.ceil(totalResults / 10),
-        results: totalResults,
+        category,
+        totalPages: Math.ceil(totalResults / 25),
       };
     } catch (error) {
       return {
@@ -221,9 +220,9 @@ export class RestaurantsService {
 
       return {
         ok: true,
-        restaurants,
+        results: restaurants,
+        totalResults,
         totalPages: Math.ceil(totalResults / 10),
-        results: totalResults,
       };
     } catch (error) {
       return {
@@ -273,7 +272,7 @@ export class RestaurantsService {
       return {
         ok: true,
         restaurants,
-        results: totalResults,
+        totalResults,
         totalPages: Math.ceil(totalResults / 10),
       };
     } catch (error) {
