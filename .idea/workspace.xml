@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9028cfe7-a361-49fa-9e44-d41f6447379d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/orders/dtos/order-updates.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orders/dtos/take-order.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/common.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/common.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/orders/entities/order.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/entities/order.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/orders/orders.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/orders.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/orders/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/orders.service.ts" afterDir="false" />
     </list>
@@ -97,7 +95,7 @@
       <workItem from="1612138278470" duration="1197000" />
       <workItem from="1612184956190" duration="224000" />
       <workItem from="1612185589713" duration="5714000" />
-      <workItem from="1612229108063" duration="1863000" />
+      <workItem from="1612229108063" duration="4337000" />
     </task>
     <servers />
   </component>
