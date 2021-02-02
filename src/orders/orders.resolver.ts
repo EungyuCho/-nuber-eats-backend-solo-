@@ -12,9 +12,11 @@ import { PubSub } from 'graphql-subscriptions';
 import { Inject } from '@nestjs/common';
 import {
   NEW_COOKED_ORDER,
+  NEW_ORDER_UPDATE,
   NEW_PENDING_ORDER,
   PUB_SUB,
 } from '../common/common.constants';
+import { OrderUpdateInput } from './dtos/order-updates.dto';
 
 @Resolver((of) => Order)
 export class OrderResolver {
@@ -73,5 +75,26 @@ export class OrderResolver {
   @Role(['Delivery'])
   cookedOrders() {
     return this.pubsub.asyncIterator(NEW_COOKED_ORDER);
+  }
+
+  @Subscription((returns) => Order, {
+    filter: (
+      { orderUpdates: order }: { orderUpdates: Order },
+      { input }: { input: OrderUpdateInput },
+      { user }: { user: User },
+    ) => {
+      if (
+        order.driverId !== user.id &&
+        order.customerId !== user.id &&
+        order.restaurant.ownerId !== user.id
+      ) {
+        return false;
+      }
+      return order.id === input.id;
+    },
+  })
+  @Role(['Any'])
+  orderUpdates(@Args('input') orderUpdatesInput: OrderUpdateInput) {
+    return this.pubsub.asyncIterator(NEW_ORDER_UPDATE);
   }
 }

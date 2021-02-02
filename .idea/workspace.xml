@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9028cfe7-a361-49fa-9e44-d41f6447379d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orders/dtos/order-updates.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/common.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/common.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/dtos/pagination.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/dtos/pagination.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/orders/entities/order.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/entities/order.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/orders/orders.resolver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/orders.resolver.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/orders/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/orders/orders.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/restaurants/dtos/restaurants.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/restaurants/dtos/restaurants.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/restaurants/restaurants.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/restaurants/restaurants.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +96,8 @@
       <workItem from="1612094382315" duration="70000" />
       <workItem from="1612138278470" duration="1197000" />
       <workItem from="1612184956190" duration="224000" />
-      <workItem from="1612185589713" duration="2858000" />
+      <workItem from="1612185589713" duration="5714000" />
+      <workItem from="1612229108063" duration="1863000" />
     </task>
     <servers />
   </component>
