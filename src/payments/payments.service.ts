@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Payment } from './entities/payment.entity';
-import { Repository } from 'typeorm';
+import { LessThan, Repository } from 'typeorm';
 import { User } from '../users/entities/user.entity';
 import {
   CreatePaymentInput,
@@ -9,6 +9,7 @@ import {
 } from './dtos/create-payment.dto';
 import { Restaurant } from '../restaurants/entities/restaurant.entity';
 import { GetPaymentsOutput } from './dtos/get-payments.dto';
+import { Cron, Interval } from '@nestjs/schedule';
 
 @Injectable()
 export class PaymentsService {
@@ -39,6 +40,11 @@ export class PaymentsService {
         };
       }
 
+      restaurant.isPromoted = true;
+      const date = new Date();
+      date.setDate(date.getDate() + 7);
+      restaurant.promotedUntil = date;
+      await this.restaurants.save(restaurant);
       await this.payments.save(
         this.payments.create({
           transactionId,
@@ -70,6 +76,21 @@ export class PaymentsService {
         ok: false,
         error: 'Could not load payments',
       };
+    }
+  }
+
+  @Interval(10000)
+  async checkPromotedRestaurants() {
+    const restaurants = await this.restaurants.find({
+      isPromoted: true,
+      promotedUntil: LessThan(new Date()),
+    });
+    console.log(restaurants);
+    for (const restaurant of restaurants) {
+      restaurant.isPromoted = false;
+      restaurant.promotedUntil = null;
+      console.log(restaurant);
+      await this.restaurants.save(restaurant);
     }
   }
 }

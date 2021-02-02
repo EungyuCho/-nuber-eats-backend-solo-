@@ -9,10 +9,14 @@ import { Role } from '../auth/role.decorator';
 import { AuthUser } from '../auth/auth-user.decorator';
 import { User } from '../users/entities/user.entity';
 import { GetPaymentsOutput } from './dtos/get-payments.dto';
+import { Cron, Interval, SchedulerRegistry, Timeout } from '@nestjs/schedule';
 
 @Resolver((of) => Payment)
 export class PaymentsResolver {
-  constructor(private readonly paymentsService: PaymentsService) {}
+  constructor(
+    private readonly paymentsService: PaymentsService,
+    private schedulerRegistry: SchedulerRegistry,
+  ) {}
 
   @Mutation((returns) => CreatePaymentOutput)
   @Role(['Owner'])
