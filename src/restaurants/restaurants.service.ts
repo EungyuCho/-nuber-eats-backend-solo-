@@ -217,18 +217,19 @@ export class RestaurantsService {
   async allRestaurants({ page }: RestaurantsInput): Promise<RestaurantsOutput> {
     try {
       const [restaurants, totalResults] = await this.restaurants.findAndCount({
-        take: 10,
-        skip: (page - 1) * 10,
+        take: 3,
+        skip: (page - 1) * 3,
         order: {
           isPromoted: 'DESC',
         },
+        relations: ['category'],
       });
 
       return {
         ok: true,
         results: restaurants,
         totalResults,
-        totalPages: Math.ceil(totalResults / 10),
+        totalPages: Math.ceil(totalResults / 3),
       };
     } catch (error) {
       return {
@@ -272,14 +273,14 @@ export class RestaurantsService {
         where: {
           name: Raw((name) => `${name} ILIKE '%${query}%'`),
         },
-        take: 10,
-        skip: (page - 1) * 10,
+        take: 3,
+        skip: (page - 1) * 3,
       });
       return {
         ok: true,
         restaurants,
         totalResults,
-        totalPages: Math.ceil(totalResults / 10),
+        totalPages: Math.ceil(totalResults / 3),
       };
     } catch (error) {
       return {
