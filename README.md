@@ -14,9 +14,6 @@
 - ![title](https://img.shields.io/badge/-TypeORM-e93524)
 
 # About Nuber Eats Backend
-> Core Entity = id, createdAt, updatedAt
-> 
-> Pagination Entity = error, ok, totalPages, totalResults
 ## Common Features
 - 계정 생성(password hash with bcrypt)
 - 로그인(save token in local storage)
